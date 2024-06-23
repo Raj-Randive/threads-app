@@ -15,6 +15,8 @@ export default async function Home() {
       <h1 className="head-text text-left">
 
         {/* Fetching the threads */}
+        {/* {console.log(`result`, result)} */}
+
         <section className="mt-9 flex flex-col gap-10">
           {
             result.posts.length === 0 ? (

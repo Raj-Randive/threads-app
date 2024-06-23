@@ -11,11 +11,11 @@ import { Webhook, WebhookRequiredHeaders } from "svix";
 import { IncomingHttpHeaders } from "http";
 
 import {
-    addMemberToCommunity,
-    createCommunity,
-    deleteCommunity,
-    removeUserFromCommunity,
-    updateCommunityInfo,
+  addMemberToCommunity,
+  createCommunity,
+  deleteCommunity,
+  removeUserFromCommunity,
+  updateCommunityInfo,
 } from "@/lib/actions/community.actions";
 
 import { NextResponse } from "next/server";
@@ -62,6 +62,7 @@ export const POST = async (request: Request) => {
   }
 
   const eventType: EventType = evnt?.type!;
+  
 
   // Listen organization creation event
   if (eventType === "organization.created") {
@@ -70,8 +71,14 @@ export const POST = async (request: Request) => {
     const { id, name, slug, logo_url, image_url, created_by } =
       evnt?.data ?? {};
 
+      console.log(id, name,
+        slug,
+        logo_url || image_url,
+        "org bio",
+        created_by);
     try {
       // @ts-ignore
+      
       await createCommunity(
         // @ts-ignore
         id,
